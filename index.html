@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
-     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -83,6 +83,7 @@
         .hero-links {
             display: flex;
             gap: 12px;
+            align-items: center;
         }
 
         .btn {
@@ -93,6 +94,7 @@
             text-decoration: none;
             letter-spacing: 0.3px;
             cursor: pointer;
+            display: inline-block;
         }
 
         .btn-primary {
@@ -106,6 +108,96 @@
             color: #888;
             border: 1px solid #333;
         }
+
+        /* ── Contact Dropdown ── */
+        .contact-overlay {
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-panel {
+            display: none;
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            background: #1a1a1a;
+            border: 1px solid #2e2e2e;
+            border-radius: 12px;
+            width: 260px;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .contact-panel.open {
+            display: block;
+        }
+
+        .contact-panel-header {
+            padding: 14px 16px 10px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .contact-panel-header h3 {
+            margin: 0 0 2px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #f0ede8;
+        }
+
+        .contact-panel-header p {
+            margin: 0;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 16px;
+            text-decoration: none;
+            color: #ccc;
+            border-bottom: 1px solid #222;
+            transition: background 0.15s;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-item:hover {
+            background: #242424;
+        }
+
+        .icon-wrap {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+            background: #2a2a2a;
+        }
+
+        .icon-wrap img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .contact-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #f0ede8;
+        }
+
+        .contact-sub {
+            font-size: 11px;
+            color: #666;
+            margin-top: 1px;
+        }
     </style>
 </head>
 <body>
@@ -118,13 +210,63 @@
             <p class="hero-bio">
                 Halo! Aku Rama yang masih belajar dalam hal web development.
                 Aku ingin mengetahui lebih banyak tentang web development dan ini adalah website pertama aku yang aku buat untuk belajar.
-                
             </p>
             <div class="hero-links">
-                <a href="mailto:ramaeshatz@gmail.com" class="btn btn-primary">Hubungi Aku</a>
+
+                <div class="contact-overlay">
+                    <a class="btn btn-primary" onclick="toggleContact(event)">
+                        Hubungi Aku ▾
+                    </a>
+                    <div class="contact-panel" id="contactPanel">
+                        <div class="contact-panel-header">
+                            <h3>Ramaeshatz</h3>
+                            <p>Pilih cara untuk terhubung</p>
+                        </div>
+                        <a class="contact-item" href="mailto:ramaeshatz@gmail.com">
+                            <div class="icon-wrap">
+                                <img src="picture/gmail.jpg" alt="Gmail">
+                            </div>
+                            <div>
+                                <div class="contact-label">Email</div>
+                                <div class="contact-sub">ramaeshatz@gmail.com</div>
+                            </div>
+                        </a>
+                        <a class="contact-item" href="https://instagram.com/rmtz26_" target="_blank">
+                            <div class="icon-wrap">
+                                <img src="picture/instagram.jpg" alt="Instagram">
+                            </div>
+                            <div>
+                                <div class="contact-label">Instagram</div>
+                                <div class="contact-sub">@rmtz26_</div>
+                            </div>
+                        </a>
+                        <a class="contact-item" href="https://linkedin.com/in/rama-esha-tz-4b436338a" target="_blank">
+                            <div class="icon-wrap">
+                                <img src="picture/linkedln.jpg" alt="LinkedIn">
+                            </div>
+                            <div>
+                                <div class="contact-label">LinkedIn</div>
+                                <div class="contact-sub">rama-esha-tz</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
                 <a href="portofolio.html" class="btn btn-secondary">Lihat Portofolio</a>
             </div>
         </div>
     </section>
+
+    <script>
+        function toggleContact(e) {
+            e.preventDefault();
+            document.getElementById('contactPanel').classList.toggle('open');
+        }
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.contact-overlay')) {
+                document.getElementById('contactPanel').classList.remove('open');
+            }
+        });
+    </script>
 </body>
 </html>
