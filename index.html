@@ -3,204 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
+    <title>My First Website</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background: #0a0a0a;
-            font-family: 'DM Sans', sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-        }
-
-        .hero {
-            display: flex;
-            align-items: center;
-            gap: 48px;
-            background: #0e0e0e;
-            border: 1px solid #2a2a2a;
-            border-radius: 16px;
-            padding: 56px 48px;
-            max-width: 720px;
-            width: 100%;
-        }
-
-        .hero-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 2px solid #333;
-            flex-shrink: 0;
-            overflow: hidden;
-        }
-
-        .hero-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-role {
-            font-size: 13px;
-            font-weight: 400;
-            color: #888;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .hero-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 600;
-            color: #f0ede8;
-            letter-spacing: -0.5px;
-            margin-bottom: 16px;
-        }
-
-        .hero-divider {
-            width: 32px;
-            height: 2px;
-            background: #c9a96e;
-            border-radius: 2px;
-            margin-bottom: 16px;
-        }
-
-        .hero-bio {
-            font-size: 15px;
-            font-weight: 300;
-            color: #aaa;
-            line-height: 1.75;
-            margin-bottom: 24px;
-            max-width: 420px;
-        }
-
-        .hero-links {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 9px 20px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 500;
-            text-decoration: none;
-            letter-spacing: 0.3px;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: #c9a96e;
-            color: #0e0e0e;
-            border: none;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #888;
-            border: 1px solid #333;
-        }
-
-        /* ── Contact Dropdown ── */
-        .contact-overlay {
-            position: relative;
-            display: inline-block;
-        }
-
-        .contact-panel {
-            display: none;
-            position: absolute;
-            top: calc(100% + 10px);
-            left: 0;
-            background: #1a1a1a;
-            border: 1px solid #2e2e2e;
-            border-radius: 12px;
-            width: 260px;
-            z-index: 100;
-            overflow: hidden;
-        }
-
-        .contact-panel.open {
-            display: block;
-        }
-
-        .contact-panel-header {
-            padding: 14px 16px 10px;
-            border-bottom: 1px solid #2a2a2a;
-        }
-
-        .contact-panel-header h3 {
-            margin: 0 0 2px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #f0ede8;
-        }
-
-        .contact-panel-header p {
-            margin: 0;
-            font-size: 12px;
-            color: #666;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 11px 16px;
-            text-decoration: none;
-            color: #ccc;
-            border-bottom: 1px solid #222;
-            transition: background 0.15s;
-        }
-
-        .contact-item:last-child {
-            border-bottom: none;
-        }
-
-        .contact-item:hover {
-            background: #242424;
-        }
-
-        .icon-wrap {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            overflow: hidden;
-            background: #2a2a2a;
-        }
-
-        .icon-wrap img {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-        }
-
-        .contact-label {
-            font-size: 13px;
-            font-weight: 500;
-            color: #f0ede8;
-        }
-
-        .contact-sub {
-            font-size: 11px;
-            color: #666;
-            margin-top: 1px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Background Slider -->
+    <div class="bg-slider">
+        <div class="bg-slide active" style="background-image: url('picture/foto1.jpg')"></div>
+        <div class="bg-slide" style="background-image: url('picture/muka1.jpg')"></div>
+        <div class="bg-slide" style="background-image: url('picture/muka2.jpg')"></div>
+        <div class="bg-slide" style="background-image: url('picture/muka3.jpg')"></div>
+        <div class="bg-overlay"></div>
+    </div>
+
     <section class="hero">
         <img class="hero-avatar" src="picture/picture.jpeg" alt="Foto Profil">
         <div>
@@ -258,6 +75,7 @@
     </section>
 
     <script>
+        // Contact Toggle
         function toggleContact(e) {
             e.preventDefault();
             document.getElementById('contactPanel').classList.toggle('open');
@@ -267,6 +85,16 @@
                 document.getElementById('contactPanel').classList.remove('open');
             }
         });
+
+        // Background Slider
+        const slides = document.querySelectorAll('.bg-slide');
+        let current = 0;
+
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 4000);
     </script>
 </body>
 </html>
